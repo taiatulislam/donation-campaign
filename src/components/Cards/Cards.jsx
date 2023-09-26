@@ -11,8 +11,8 @@ const Cards = () => {
     }, [])
 
     return (
-        <div className='max-w-7xl mx-auto mt-[250px] mb-20'>
-            <div className='grid grid-cols-4 gap-5'>
+        <div className='px-12 lg:max-w-7xl mx-auto mt-[250px] mb-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 {
                     cardData.map(card => <Card key={card.id} card={card}></Card>)
                 }
