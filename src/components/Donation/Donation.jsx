@@ -20,7 +20,7 @@ const Donation = () => {
                     donationItems.slice(0, dataLength).map(donation => <DonationCard key={donation.id} donation={donation}></DonationCard>)
                 }
             </div>
-            <div className={donationItems.length === dataLength ? `hidden` : 'flex justify-center'}>
+            <div className={donationItems.length === dataLength || donationItems.length < 5 ? `hidden` : 'flex justify-center'}>
                 <button className="bg-green-600 text-white p-2 rounded-md" onClick={handleShowAll}>Show All</button>
             </div>
         </div>
