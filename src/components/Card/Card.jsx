@@ -8,10 +8,10 @@ const Card = ({ card }) => {
     const navigate = useNavigate();
 
     return (
-        <div style={{ backgroundColor: cardBg, color: textColor }} className={`rounded-lg pb-3`} onClick={() => navigate(`/CardDetails/${id}`)}>
+        <div style={{ backgroundColor: cardBg, color: textColor }} className='rounded-lg pb-3' onClick={() => navigate(`/CardDetails/${id}`)}>
             <img src={image} alt="category image" className='mb-4 w-full' />
             <div className='pl-4'>
-                <span style={{ backgroundColor: buttonBg }} className={`p-2 text-sm font-medium rounded-md`}>{category}</span>
+                <span style={{ backgroundColor: buttonBg }} className='p-2 text-sm font-medium rounded-md'>{category}</span>
                 <h4 className='mt-2 text-[20px] font-medium'>{title}</h4>
             </div>
         </div>

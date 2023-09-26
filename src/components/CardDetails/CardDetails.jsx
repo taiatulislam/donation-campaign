@@ -16,18 +16,39 @@ const CardDetails = () => {
         setDonate(getCard);
     }, [id, cards])
 
-    const handleToast = () => {
-        return toast.success('Successful!', {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
 
+    const handleToast = (donate) => {
+        const donationArray = [];
+        const donateItems = JSON.parse(localStorage.getItem('donation'));
+
+        if (!donateItems) {
+            donationArray.push(donate);
+            localStorage.setItem('donation', JSON.stringify(donationArray))
+            return toast.success('Donate Successful!', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+        else {
+            donationArray.push(...donateItems, donate)
+            localStorage.setItem('donation', JSON.stringify(donationArray))
+            return toast.success('Donate Successful!', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
     }
 
     return (
@@ -36,7 +57,7 @@ const CardDetails = () => {
 
             <div className='h-[150px] bg-black opacity-70 relative -mt-[150px] rounded-lg'>
                 <div>
-                    <button onClick={handleToast} style={{ backgroundColor: `${donate.textColor}` }} className={`text-white py-4 px-5 rounded-lg ml-10 mt-16`}>Donate ${donate.price}</button>
+                    <button onClick={() => handleToast(donate)} style={{ backgroundColor: `${donate.textColor}` }} className={`text-white py-4 px-5 rounded-lg ml-10 mt-16`}>Donate ${donate.price}</button>
                     <ToastContainer
                         position="bottom-right"
                         autoClose={2000}
