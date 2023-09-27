@@ -1,10 +1,16 @@
+import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
 const Statistics = () => {
-    const donationItems = JSON.parse(localStorage.getItem('donation'));
 
-    const data1 = parseFloat((donationItems.length * 100 / 12).toFixed(2));
-    const data2 = parseFloat((100 - data1).toFixed(2));
+    const [itemsLength, setItemsLength] = useState(0);
+
+    useEffect(() => {
+        (JSON.parse(localStorage.getItem('donation'))) !== null && setItemsLength((JSON.parse(localStorage.getItem('donation'))).length)
+    }, [])
+
+    const data1 = itemsLength;
+    const data2 = 12 - data1;
 
     const data = [
         {
@@ -28,7 +34,7 @@ const Statistics = () => {
 
         return (
             <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
+                {`${(percent * 100).toFixed(2)}%`}
             </text>
         );
     }
