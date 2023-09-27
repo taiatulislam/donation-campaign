@@ -55,7 +55,7 @@ const CardDetails = () => {
         <div className='w-full px-12 lg:max-w-7xl mx-auto mt-16 mb-10'>
             <img src={donate.image} alt="" className='w-full  rounded-xl' />
 
-            <div className='h-[150px] bg-black opacity-70 relative -mt-[150px] rounded-lg'>
+            <div className='h-[150px] bg-black opacity-75 relative -mt-[150px] rounded-lg'>
                 <div>
                     <button onClick={() => handleToast(donate)} style={{ backgroundColor: `${donate.textColor}` }} className={`text-white py-4 px-5 rounded-lg ml-10 mt-16`}>Donate ${donate.price}</button>
                     <ToastContainer
@@ -72,8 +72,6 @@ const CardDetails = () => {
                     />
                 </div>
             </div>
-
-
 
             <h3 className='text-4xl font-bold mb-5 mt-10'>{donate.title}</h3>
             <p>{donate.description}</p>

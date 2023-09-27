@@ -9,7 +9,7 @@ const Card = ({ card }) => {
 
     return (
         <div style={{ backgroundColor: cardBg, color: textColor }} className='rounded-lg pb-3' onClick={() => navigate(`/CardDetails/${id}`)}>
-            <img src={image} alt="category image" className='mb-4 w-full' />
+            <img src={image} alt="category image" className='mb-4 w-full h-[170px] rounded-lg' />
             <div className='pl-4'>
                 <span style={{ backgroundColor: buttonBg }} className='p-2 text-sm font-medium rounded-md'>{category}</span>
                 <h4 className='mt-2 text-[20px] font-medium'>{title}</h4>
