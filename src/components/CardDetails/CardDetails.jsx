@@ -21,33 +21,50 @@ const CardDetails = () => {
         const donationArray = [];
         const donateItems = JSON.parse(localStorage.getItem('donation'));
 
-        if (!donateItems) {
-            donationArray.push(donate);
-            localStorage.setItem('donation', JSON.stringify(donationArray))
-            return toast.success('Donate Successful!', {
+        const isAvailable = donateItems !== null && donateItems.find(item => item.id === donate.id)
+
+        if (isAvailable) {
+            return toast.error("Already Donated", {
                 position: "bottom-right",
-                autoClose: 2000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-            });
+            })
         }
         else {
-            donationArray.push(...donateItems, donate)
-            localStorage.setItem('donation', JSON.stringify(donationArray))
-            return toast.success('Donate Successful!', {
-                position: "bottom-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            if (!donateItems) {
+                donationArray.push(donate);
+                localStorage.setItem('donation', JSON.stringify(donationArray))
+                return toast.success('Donate Successful!', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+
+            else {
+                donationArray.push(...donateItems, donate)
+                localStorage.setItem('donation', JSON.stringify(donationArray))
+                return toast.success('Donate Successful!', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
         }
     }
 

@@ -6,7 +6,7 @@ const Home = () => {
 
     const [cardData, setCardData] = useState([]);
 
-    const [category, setCategory] = useState(null);
+    const [category, setCategory] = useState('');
 
     useEffect(() => {
         fetch('donationCampaign.json')
