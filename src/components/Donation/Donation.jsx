@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DonationCard from "../DonationCard/DonationCard";
-
-
 
 const Donation = () => {
 
-    const donationItems = JSON.parse(localStorage.getItem('donation'));
-
+    const [donationItems, setDonationItems] = useState([]);
     const [dataLength, setDataLength] = useState(4);
+
+    useEffect(() => {
+        (JSON.parse(localStorage.getItem('donation'))) !== null && setDonationItems((JSON.parse(localStorage.getItem('donation'))))
+    }, [])
 
     const handleShowAll = () => {
         setDataLength(donationItems.length)
